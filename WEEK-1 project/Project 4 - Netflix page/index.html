@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix - Watch TV Shows Online, Watch Movies Online</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"
+        type="image/x-icon">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- PROFILE SELECTION SCREEN (Gate) -->
+    <div id="profile-screen" class="profile-container">
+        <div class="profile-wrapper">
+            <h1 class="profile-title">Who's watching?</h1>
+            <div class="profile-list">
+                <!-- Profile 1 -->
+                <div class="profile-card" data-profile="tushar">
+                    <div class="avatar-box color-blue">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop"
+                            alt="Tushar" class="avatar-img">
+                    </div>
+                      <span class="profile-name">Tushar</span>
+                </div>
+                <!-- Profile 2 -->
+                <div class="profile-card" data-profile="kids">
+                    <div class="avatar-box color-yellow">
+                        <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=150&h=150&fit=crop"
+                            alt="Kids" class="avatar-img">
+                    </div>
+                    <span class="profile-name">Kids</span>
+                </div>
+                <!-- Profile 3 -->
+                <div class="profile-card" data-profile="guest">
+                    <div class="avatar-box color-green">
+                        <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=150&h=150&fit=crop"
+                            alt="Guest" class="avatar-img">
+                    </div>
+                    <span class="profile-name">Guest</span>
+                </div>
+                <!-- Add Profile -->
+                <div class="profile-card add-profile-card">
+                    <div class="avatar-box add-btn">
+                        <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                        </svg>
+                    </div>
+                    <span class="profile-name">Add Profile</span>
+                </div>
+            </div>
+            <button class="manage-profile-btn">Manage Profiles</button>
+        </div>
+    </div>
+
+    <!-- MAIN BROWSE INTERFACE -->
+    <div id="main-browse" class="browse-container hidden">
+        <!-- HEADER / NAVBAR -->
+        <header class="main-header" id="main-header">
+            <div class="header-left">
+                <!-- Netflix Premium SVG Logo -->
+                <a href="#" class="logo-link">
+                    <svg viewBox="0 0 111 30" width="100" height="27" fill="#E50914" xmlns="http://www.w3.org/2000/svg"
+                        class="netflix-logo">
+                        <path
+                            d="M10.5 0h8.63v30H10.5zM29.56 0h8.62v30h-8.62zM48.63 0h8.62v30h-8.62zM67.69 0h8.63v30h-8.63zM86.76 0h8.62v30h-8.62zM0 0h8.63v30H0zM105.81 0H111v30h-5.19zM19.13 0l10.43 30h-8.62L10.5 0zM38.19 0l10.44 30h-8.63L29.56 0zM57.26 0l10.43 30h-8.63L48.63 0zM76.32 0l10.44 30h-8.63L67.69 0zM95.38 0l10.43 30h-8.62L86.76 0z" />
+                    </svg>
+                </a>
+                <nav class="navigation">
+                    <ul class="nav-links">
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#">TV Shows</a></li>
+                        <li><a href="#">Movies</a></li>
+                        <li><a href="#">New & Popular</a></li>
+                        <li><a href="#">My List</a></li>
+                        <li><a href="#">Browse by Languages</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header-right">
+                <!-- Search bar -->
+                <div class="search-box" id="search-box">
+                    <button class="search-btn" id="search-btn">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                            <path
+                                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                        </svg>
+                    </button>
+                    <input type="text" placeholder="Titles, people, genres..." class="search-input" id="search-input">
+                </div>
+                <!-- Kids label -->
+                <span class="kids-label">Kids</span>
+                <!-- Notifications icon -->
+                <div class="notifications-bell">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                        <path
+                            d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
+                    </svg>
+                    <span class="notification-badge">3</span>
+                </div>
+                <!-- User Profile Menu -->
+                <div class="user-menu-wrapper" id="profile-dropdown-trigger">
+                    <div class="current-user-avatar">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
+                            alt="User Avatar" class="header-avatar-img" id="header-avatar">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="dropdown-caret">
+                            <path d="M7 10l5 5 5-5z" />
+                        </svg>
+                    </div>
+                    <!-- Dropdown -->
+                    <div class="profile-dropdown-menu">
+                        <ul class="dropdown-list">
+                            <li>
+                                <a href="#" class="dropdown-item active-user">
+                                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
+                                        class="dropdown-avatar" alt="Tushar">
+                                    <span>Tushar</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-item">
+                                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=100&h=100&fit=crop"
+                                        class="dropdown-avatar" alt="Kids">
+                                    <span>Kids</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-item">
+                                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100&h=100&fit=crop"
+                                        class="dropdown-avatar" alt="Guest">
+                                    <span>Guest</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <hr class="dropdown-divider">
+                        <ul class="dropdown-list">
+                            <li><a href="#" class="dropdown-item action-item">Manage Profiles</a></li>
+                            <li><a href="#" class="dropdown-item action-item">Account</a></li>
+                            <li><a href="#" class="dropdown-item action-item" id="sign-out-btn">Sign out of Netflix</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- HERO BANNER -->
+        <section class="hero-banner"
+            style="background-image: linear-gradient(to top, #141414 0%, rgba(20, 20, 20, 0.4) 60%, rgba(20, 20, 20, 0.7) 100%), url('https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=1600');">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="#E50914" class="n-logo-icon">
+                        <path d="M4 2v20h4V9l8 13h4V2h-4v13L8 2H4z" />
+                    </svg>
+                    <span>ORIGINAL SERIES</span>
+                </div>
+                <h1 class="hero-title">STRANGER<br>THINGS</h1>
+                <div class="hero-meta">
+                    <span class="match-score">98% Match</span>
+                    <span class="release-year">2026</span>
+                    <span class="maturity-rating">TV-MA</span>
+                    <span class="seasons-count">5 Seasons</span>
+                    <span class="hd-badge">Ultra HD 4K</span>
+                </div>
+                <p class="hero-description">
+                    When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
+                    supernatural forces and one strange little girl.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-play" onclick="playMovie('Stranger Things')">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                        Play
+                    </button>
+                    <button class="btn btn-info" id="hero-more-info">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path
+                                d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v-2h-2v2z" />
+                        </svg>
+                        More Info
+                    </button>
+                </div>
+            </div>
+            <!-- Audio/Mute & Maturity indicator overlay -->
+            <div class="hero-right-overlay">
+                <button class="mute-btn" id="mute-btn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" id="mute-icon">
+                        <!-- Volume Up SVG (Default unmute view) -->
+                        <path
+                            d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                    </svg>
+                </button>
+                <div class="maturity-bar">
+                    TV-MA
+                </div>
+            </div>
+        </section>
+
+        <!-- MOVIE CATEGORIES SLIDERS -->
+        <main class="movie-rows-container">
+            <!-- Row 1: Popular on Netflix -->
+            <section class="movie-row-section">
+                <h2 class="row-title">Popular on Netflix</h2>
+                <div class="row-cards-wrapper">
+                    <button class="row-scroll-btn left-scroll-btn" onclick="scrollRow(this, 'left')">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                        </svg>
+                    </button>
+                    <div class="row-cards">
+                        <!-- Card 1 -->
+                        <div class="movie-card" data-title="Cyberpunk 2077: Edge" data-match="96" data-rating="TV-MA"
+                            data-seasons="1 Season" data-genre="Sci-Fi • Anime • Action"
+                            data-bg="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800"
+                            data-description="A street kid trying to survive in a technology and body modification-obsessed city of the future. Having everything to lose, he chooses to stay alive by becoming an edgerunner.">
+                            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500" alt="Cyberpunk"
+                                class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play"
+                                            onclick="playMovie('Cyberpunk 2077: Edge')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">96% Match</span>
+                                    <span class="maturity-rating">TV-MA</span>
+                                    <span class="seasons-count">1 Season</span>
+                                </div>
+                                <div class="hover-genres">Sci-Fi • Anime • Action</div>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="movie-card" data-title="Deep Space Odyssey" data-match="94" data-rating="PG-13"
+                            data-seasons="2 Hours" data-genre="Sci-Fi • Suspense"
+                            data-bg="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800"
+                            data-description="A thrilling journey of a stellar exploration crew investigating a signal from the outer ring of Saturn, where cosmic physics and survival collide.">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500"
+                                alt="Space Odyssey" class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play" onclick="playMovie('Deep Space Odyssey')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">94% Match</span>
+                                    <span class="maturity-rating">PG-13</span>
+                                    <span class="seasons-count">2 Hours</span>
+                                </div>
+                                <div class="hover-genres">Sci-Fi • Suspense</div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="movie-card" data-title="Whispers of the Forest" data-match="89" data-rating="PG-13"
+                            data-seasons="2 Seasons" data-genre="Mystery • Thriller • Drama"
+                            data-bg="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800"
+                            data-description="Deep inside an ancient pine forest, a small town researcher uncovers mysterious geometric sound waves that alter human memories.">
+                            <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=500" alt="Forest"
+                                class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play"
+                                            onclick="playMovie('Whispers of the Forest')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">89% Match</span>
+                                    <span class="maturity-rating">PG-13</span>
+                                    <span class="seasons-count">2 Seasons</span>
+                                </div>
+                                <div class="hover-genres">Mystery • Thriller • Drama</div>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="movie-card" data-title="Neon Drift" data-match="95" data-rating="PG"
+                            data-seasons="1 Hour 45m" data-genre="Sports • Action • Fast"
+                            data-bg="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=800"
+                            data-description="A retired street racer is dragged back into the high-stakes world of underground Tokyo electric car championships to save his brother.">
+                            <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=500"
+                                alt="Neon Racer" class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play" onclick="playMovie('Neon Drift')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">95% Match</span>
+                                    <span class="maturity-rating">PG</span>
+                                    <span class="seasons-count">1h 45m</span>
+                                </div>
+                                <div class="hover-genres">Sports • Action • Fast</div>
+                            </div>
+                        </div>
+                        <!-- Card 5 -->
+                        <div class="movie-card" data-title="The Blue Abyss" data-match="91" data-rating="PG"
+                            data-seasons="1 Season" data-genre="Nature • Documentary"
+                            data-bg="https://images.unsplash.com/photo-1551244072-5d12893278ab?w=800"
+                            data-description="Explore the deepest trenches of the ocean floor, showcasing bioluminescent creatures and hidden ecosystems that humanity has never seen.">
+                            <img src="https://images.unsplash.com/photo-1551244072-5d12893278ab?w=500" alt="Ocean"
+                                class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play" onclick="playMovie('The Blue Abyss')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">91% Match</span>
+                                    <span class="maturity-rating">PG</span>
+                                    <span class="seasons-count">1 Season</span>
+                                </div>
+                                <div class="hover-genres">Nature • Documentary</div>
+                            </div>
+                        </div>
+                        <!-- Card 6 -->
+                        <div class="movie-card" data-title="Remnants of Greece" data-match="88" data-rating="PG"
+                            data-seasons="3 Seasons" data-genre="History • Archeology"
+                            data-bg="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800"
+                            data-description="A docuseries looking at recent archeological findings at the Parthenon that challenge historical timelines about the classical Greek era.">
+                            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=500" alt="Greece"
+                                class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play" onclick="playMovie('Remnants of Greece')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">88% Match</span>
+                                    <span class="maturity-rating">PG</span>
+                                    <span class="seasons-count">3 Seasons</span>
+                                </div>
+                                <div class="hover-genres">History • Archeology</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="row-scroll-btn right-scroll-btn" onclick="scrollRow(this, 'right')">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Row 2: Action & Thrillers -->
+            <section class="movie-row-section">
+                <h2 class="row-title">Action & Thrillers</h2>
+                <div class="row-cards-wrapper">
+                    <button class="row-scroll-btn left-scroll-btn" onclick="scrollRow(this, 'left')">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                        </svg>
+                    </button>
+                    <div class="row-cards">
+                        <!-- Card 7 -->
+                        <div class="movie-card" data-title="Dune Outlaw" data-match="97" data-rating="R"
+                            data-seasons="2 Hours 12m" data-genre="Sci-Fi • Action • Gritty"
+                            data-bg="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800"
+                            data-description="A stranded mineral scavenger on a hostile desert planet fights off rival clans and synthetic mega-monsters to recover an ancient star map.">
+                            <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500"
+                                alt="Desert Chase" class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play" onclick="playMovie('Dune Outlaw')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">97% Match</span>
+                                    <span class="maturity-rating">R</span>
+                                    <span class="seasons-count">2h 12m</span>
+                                </div>
+                                <div class="hover-genres">Sci-Fi • Action • Gritty</div>
+                            </div>
+                        </div>
+                        <!-- Card 8 -->
+                        <div class="movie-card" data-title="Shadow Protocol" data-match="93" data-rating="TV-MA"
+                            data-seasons="1 Season" data-genre="Spy • Action • Suspense"
+                            data-bg="https://images.unsplash.com/photo-1531259683007-016a7b628fc3?w=800"
+                            data-description="A rogue intelligence agent is framed for a cyber-nuclear breach and goes underground to expose the dark agency that set him up.">
+                            <img src="https://images.unsplash.com/photo-1531259683007-016a7b628fc3?w=500"
+                                alt="Agent Shadow" class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play" onclick="playMovie('Shadow Protocol')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">93% Match</span>
+                                    <span class="maturity-rating">TV-MA</span>
+                                    <span class="seasons-count">1 Season</span>
+                                </div>
+                                <div class="hover-genres">Spy • Action • Suspense</div>
+                            </div>
+                        </div>
+                        <!-- Card 9 -->
+                        <div class="movie-card" data-title="Overdrive" data-match="90" data-rating="R"
+                            data-seasons="1 Hour 50m" data-genre="Car Chase • Action • Adrenaline"
+                            data-bg="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800"
+                            data-description="A hyper-tech muscle car heist across the coastal highway of Southern France goes completely wrong, turning into a deadly game of chess.">
+                            <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=500"
+                                alt="Speed Limit" class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play" onclick="playMovie('Overdrive')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">90% Match</span>
+                                    <span class="maturity-rating">R</span>
+                                    <span class="seasons-count">1h 50m</span>
+                                </div>
+                                <div class="hover-genres">Car Chase • Action • Adrenaline</div>
+                            </div>
+                        </div>
+                        <!-- Card 10 -->
+                        <div class="movie-card" data-title="The Ronin Legacy" data-match="92" data-rating="TV-MA"
+                            data-seasons="2 Seasons" data-genre="Historical • Action • Martial Arts"
+                            data-bg="https://images.unsplash.com/photo-1552083375-1447ce886485?w=800"
+                            data-description="A rogue master swordsman in Edo-era Japan seeks peace, but a sinister ninja syndicate threatens to burn his home province.">
+                            <img src="https://images.unsplash.com/photo-1552083375-1447ce886485?w=500"
+                                alt="Samurai Edge" class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play" onclick="playMovie('The Ronin Legacy')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">92% Match</span>
+                                    <span class="maturity-rating">TV-MA</span>
+                                    <span class="seasons-count">2 Seasons</span>
+                                </div>
+                                <div class="hover-genres">Historical • Action • Martial Arts</div>
+                            </div>
+                        </div>
+                        <!-- Card 11 -->
+                        <div class="movie-card" data-title="Heist on Wall Street" data-match="96" data-rating="PG-13"
+                            data-seasons="2 Hours 5m" data-genre="Thriller • Crime • Drama"
+                            data-bg="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800"
+                            data-description="A sophisticated team of financial coders plans a digital heist to reroute trillions of dark money into charity accounts.">
+                            <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=500"
+                                alt="City Heist" class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play"
+                                            onclick="playMovie('Heist on Wall Street')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">96% Match</span>
+                                    <span class="maturity-rating">PG-13</span>
+                                    <span class="seasons-count">2h 5m</span>
+                                </div>
+                                <div class="hover-genres">Thriller • Crime • Drama</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="row-scroll-btn right-scroll-btn" onclick="scrollRow(this, 'right')">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Row 3: Sci-Fi & Award Winning -->
+            <section class="movie-row-section">
+                <h2 class="row-title">Sci-Fi & Award Winning</h2>
+                <div class="row-cards-wrapper">
+                    <button class="row-scroll-btn left-scroll-btn" onclick="scrollRow(this, 'left')">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                        </svg>
+                    </button>
+                    <div class="row-cards">
+                        <!-- Card 12 -->
+                        <div class="movie-card" data-title="Chinatown Neon" data-match="91" data-rating="PG-13"
+                            data-seasons="2 Hours" data-genre="Sci-Fi • Thriller • Neo-Noir"
+                            data-bg="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800"
+                            data-description="A private detective specialized in retrieving stolen neural implants becomes embroiled in a corporate murder mystery.">
+                            <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=500"
+                                alt="Cyber City" class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play" onclick="playMovie('Chinatown Neon')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">91% Match</span>
+                                    <span class="maturity-rating">PG-13</span>
+                                    <span class="seasons-count">2 Hours</span>
+                                </div>
+                                <div class="hover-genres">Sci-Fi • Thriller • Neo-Noir</div>
+                            </div>
+                        </div>
+                        <!-- Card 13 -->
+                        <div class="movie-card" data-title="Orbit Decay" data-match="95" data-rating="PG"
+                            data-seasons="2 Hours 10m" data-genre="Sci-Fi • Adventure • Visual"
+                            data-bg="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800"
+                            data-description="A team of space station engineers must coordinate a dangerous atmospheric reentry during a violent solar storm.">
+                            <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=500"
+                                alt="Alien Sky" class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play" onclick="playMovie('Orbit Decay')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">95% Match</span>
+                                    <span class="maturity-rating">PG</span>
+                                    <span class="seasons-count">2h 10m</span>
+                                </div>
+                                <div class="hover-genres">Sci-Fi • Adventure • Visual</div>
+                            </div>
+                        </div>
+                        <!-- Card 14 -->
+                        <div class="movie-card" data-title="Codebreakers" data-match="88" data-rating="PG"
+                            data-seasons="1 Season" data-genre="Tech • Docuseries • Thrilling"
+                            data-bg="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800"
+                            data-description="Discover the secret history of computer scientists who broke encryption codes to protect civilian safety during major conflicts.">
+                            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500"
+                                alt="Quantum Leap" class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play" onclick="playMovie('Codebreakers')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">88% Match</span>
+                                    <span class="maturity-rating">PG</span>
+                                    <span class="seasons-count">1 Season</span>
+                                </div>
+                                <div class="hover-genres">Tech • Docuseries • Thrilling</div>
+                            </div>
+                        </div>
+                        <!-- Card 15 -->
+                        <div class="movie-card" data-title="Automation Age" data-match="92" data-rating="PG-13"
+                            data-seasons="4 Seasons" data-genre="Sci-Fi • Drama • Speculative"
+                            data-bg="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800"
+                            data-description="A profound look at a future society where household robots develop complex emotional capacities, creating legal and social crises.">
+                            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500" alt="Robotics"
+                                class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play" onclick="playMovie('Automation Age')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">92% Match</span>
+                                    <span class="maturity-rating">PG-13</span>
+                                    <span class="seasons-count">4 Seasons</span>
+                                </div>
+                                <div class="hover-genres">Sci-Fi • Drama • Speculative</div>
+                            </div>
+                        </div>
+                        <!-- Card 16 -->
+                        <div class="movie-card" data-title="Deep Cosmic Dust" data-match="96" data-rating="PG"
+                            data-seasons="2 Hours 3m" data-genre="Sci-Fi • Mind-bending • Drama"
+                            data-bg="https://images.unsplash.com/photo-1464802686167-b939a6910659?w=800"
+                            data-description="A solitary astronaut floating inside a nebula struggles with auditory hallucinations that seem to be coordinates leading home.">
+                            <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659?w=500" alt="Nebula"
+                                class="card-img">
+                            <div class="card-hover-details">
+                                <div class="hover-actions">
+                                    <div class="hover-actions-left">
+                                        <button class="hover-btn circle-play" onclick="playMovie('Deep Cosmic Dust')">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-add">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                            </svg>
+                                        </button>
+                                        <button class="hover-btn circle-like">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button class="hover-btn circle-info" onclick="openDetailsModal(this)">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="hover-meta">
+                                    <span class="match-score">96% Match</span>
+                                    <span class="maturity-rating">PG</span>
+                                    <span class="seasons-count">2h 3m</span>
+                                </div>
+                                <div class="hover-genres">Sci-Fi • Mind-bending • Drama</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="row-scroll-btn right-scroll-btn" onclick="scrollRow(this, 'right')">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+                        </svg>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- FAQ / DYNAMIC ACCORDION (Landing-page section integrated inside browse to make it look feature-rich) -->
+        <section class="faq-accordion-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What is Netflix?</span>
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" class="faq-icon">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies,
+                            anime, documentaries, and more on thousands of internet-connected devices. You can watch as
+                            much as you want, whenever you want without a single commercial – all for one low monthly
+                            price. There's always something new to discover and new TV shows and movies are added every
+                            week!</p>
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How much does Netflix cost?</span>
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" class="faq-icon">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one
+                            fixed monthly fee. Plans range from USD 6.99 to USD 22.99 a month. No extra costs, no
+                            contracts.</p>
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Where can I watch?</span>
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" class="faq-icon">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at
+                            netflix.com from your personal computer or on any internet-connected device that offers the
+                            Netflix app, including smart TVs, smartphones, tablets, streaming media players and game
+                            consoles.</p>
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How do I cancel?</span>
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" class="faq-icon">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Netflix is flexible. There are no pesky contracts and no commitments. You can easily cancel
+                            your account online in two clicks. There are no cancellation fees – start or stop your
+                            account anytime.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="browse-footer">
+            <div class="footer-social-links">
+                <a href="#" class="social-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path
+                            d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path
+                            d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path
+                            d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.507a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.507 9.388.507 9.388.507s7.517 0 9.388-.507a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                </a>
+            </div>
+            <div class="footer-links-grid">
+                <a href="#">Audio Description</a>
+                <a href="#">Help Center</a>
+                <a href="#">Gift Cards</a>
+                <a href="#">Media Center</a>
+                <a href="#">Investor Relations</a>
+                <a href="#">Jobs</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy</a>
+                <a href="#">Legal Notices</a>
+                <a href="#">Cookie Preferences</a>
+                <a href="#">Corporate Information</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <button class="service-code-btn">Service Code</button>
+            <p class="footer-copyright">© 1997-2026 Netflix, Inc. {5d562a6d-c3a8-4509-b7d1-ef5444766454}</p>
+        </footer>
+    </div>
+
+    <!-- MOVIE DETAILS MODAL -->
+    <div id="movie-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <!-- Close button -->
+            <button class="modal-close-btn" id="modal-close-btn">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </svg>
+            </button>
+            <!-- Banner Backdrop inside modal -->
+            <div class="modal-backdrop" id="modal-backdrop-img">
+                <div class="modal-backdrop-overlay">
+                    <div class="modal-actions-container">
+                        <h2 class="modal-title" id="modal-movie-title">Movie Title</h2>
+                        <div class="modal-buttons">
+                            <button class="btn btn-play" id="modal-play-btn">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                                Play
+                            </button>
+                            <button class="hover-btn circle-add">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                </svg>
+                            </button>
+                            <button class="hover-btn circle-like">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Info Details Grid -->
+            <div class="modal-info-grid">
+                <div class="modal-info-left">
+                    <div class="modal-meta-row">
+                        <span class="match-score" id="modal-match-score">95% Match</span>
+                        <span class="release-year">2026</span>
+                        <span class="maturity-rating" id="modal-maturity-rating">TV-MA</span>
+                        <span class="seasons-count" id="modal-seasons-count">1 Season</span>
+                        <span class="hd-badge">HD</span>
+                    </div>
+                    <p class="modal-description" id="modal-movie-desc">
+                        Detailed description goes here.
+                    </p>
+                </div>
+                <div class="modal-info-right">
+                    <div class="cast-genres-list">
+                        <p><span>Cast:</span> Winona Ryder, David Harbour, Millie Bobby Brown, Finn Wolfhard</p>
+                        <p><span>Genres:</span> <span id="modal-genres">Drama, Sci-Fi, Thriller</span></p>
+                        <p><span>This show is:</span> Exciting, Suspenseful, Imaginative</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUDIO PLAYER ELEMENT (Helper for play controls feedback) -->
+    <div id="toast-message" class="toast-popup hidden">Playing show...</div>
+
+    <!-- Application Logic -->
+    <script src="app.js"></script>
+</body>
+
+</html>
