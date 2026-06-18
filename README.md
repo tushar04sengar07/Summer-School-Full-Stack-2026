@@ -24,5 +24,16 @@ This repository contains projects and assignments completed during my college Su
 - HTML5
 - CSS3
 
+
+## Week 2 Projects
+- Calculator webpage
+- To do list webpage
+
+## Technologies Used
+- HTML5
+- CSS3
+- JavaScript
+
+  
 ## Author
 Tushar Sengar
