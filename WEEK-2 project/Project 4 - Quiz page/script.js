@@ -40,7 +40,7 @@ function loadQuestion() {
 
     const currentQuiz = quizData[currentQuestion];
 
-    question.textContent = currentQuiz.question;
+    question.innerText = currentQuiz.question;
 
     options.innerHTML = "";
 
@@ -100,15 +100,15 @@ function showResult() {
         score >= 3 ? "Good Job!" : "Keep Practicing!";
 }
 
-document.getElementById("restart-btn").addEventListener("click", () => {
+// document.getElementById("restart-btn").addEventListener("click", () => {
 
-    currentQuestion = 0;
-    score = 0;
+//     currentQuestion = 0;
+//     score = 0;
 
-    document.getElementById("result").style.display = "none";
-    document.getElementById("quiz").style.display = "block";
+//     document.getElementById("result").style.display = "none";
+//     document.getElementById("quiz").style.display = "block";
 
-    loadQuestion();
-});
+//     loadQuestion();
+// });
 
 loadQuestion();
