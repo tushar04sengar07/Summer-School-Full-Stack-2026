@@ -24,5 +24,17 @@ This repository contains projects and assignments completed during my college Su
 - HTML5
 - CSS3
 
+## Week 2 Projects
+- Calculator
+- To-do List
+- Weather App
+- JavaScript Quix Page
+
+## Technologies Used
+- HTML5
+- CSS3
+- JavaScript
+- API's
+
 ## Author
 Tushar Sengar
