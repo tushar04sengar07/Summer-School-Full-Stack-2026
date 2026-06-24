@@ -1,148 +1,114 @@
-const questions = [
+const quizData = [
     {
         question: "Q1. Which language is used for web page structure?",
-        answers: [
-            { text: "HTML", correct: true },
-            { text: "CSS", correct: false },
-            { text: "JavaScript", correct: false },
-            { text: "Python", correct: false }
-        ]
+        options: ["HTML", "CSS", "JavaScript", "Python"],
+        answer: "HTML"
     },
     {
-        question: "Q2. Which language is used for styling web pages?",
-        answers: [
-            { text: "HTML", correct: false },
-            { text: "CSS", correct: true },
-            { text: "Java", correct: false },
-            { text: "Python", correct: false }
-        ]
+        question: "Q2. Which CSS property changes text color?",
+        options: ["background-color", "color", "font-size", "border"],
+        answer: "color"
     },
     {
-        question: "Q3. Which language makes web pages interactive?",
-        answers: [
-            { text: "HTML", correct: false },
-            { text: "CSS", correct: false },
-            { text: "JavaScript", correct: true },
-            { text: "SQL", correct: false }
-        ]
+        question: "Q3. Which keyword is used to declare a variable?",
+        options: ["let", "define", "create", "new"],
+        answer: "let"
     },
     {
-        question: "Q4. Which symbol is used for comments in JavaScript?",
-        answers: [
-            { text: "//", correct: true },
-            { text: "#", correct: false },
-            { text: "<!-- -->", correct: false },
-            { text: "**", correct: false }
-        ]
+        question: "Q4. Which mehod selects an element by ID?",
+        options: ["getElementById()", "query()", "find()", "select()"],
+        answer: "getElementById()"
     },
     {
-        question: "Q5. Which company developed JavaScript?",
-        answers: [
-            { text: "Microsoft", correct: false },
-            { text: "Google", correct: false },
-            { text: "Netscape", correct: true },
-            { text: "Apple", correct: false }
-        ]
+        question: "Q5. Which event occurs when a button is clicked?",
+        options: ["onclick", "onhover", "onfocus", "onsubmit"],
+        answer: "onsubmit"
     }
 ];
 
-const questionElement = document.getElementById("question");
-const answerButtons = document.getElementById("answer-buttons");
-const nextButton = document.getElementById("next-btn");
-
-let currentQuestionIndex = 0;
+let currentQuestion = 0;
 let score = 0;
+let selectedAnswer = null;
 
-function startQuiz() {
-    currentQuestionIndex = 0;
-    score = 0;
-    nextButton.innerHTML = "Next Question";
-    showQuestion();
-}
+const question = document.getElementById("question");
+const options = document.getElementById("options");
+const nextBtn = document.getElementById("next-btn");
 
-function showQuestion() {
-    resetState();
+function loadQuestion() {
 
-    let currentQuestion = questions[currentQuestionIndex];
-    questionElement.innerHTML = currentQuestion.question;
+    selectedAnswer = null;
 
-    currentQuestion.answers.forEach(answer => {
+    const currentQuiz = quizData[currentQuestion];
+
+    question.textContent = currentQuiz.question;
+
+    options.innerHTML = "";
+
+    currentQuiz.options.forEach(option => {
+
         const button = document.createElement("button");
-        button.innerHTML = answer.text;
-        button.classList.add("btn");
 
-        if (answer.correct) {
-            button.dataset.correct = answer.correct;
-        }
+        button.classList.add("option");
 
-        button.addEventListener("click", selectAnswer);
-        answerButtons.appendChild(button);
+        button.innerText = option;
+
+        button.addEventListener("click", () => {
+
+            document.querySelectorAll(".option").forEach(btn => {
+                btn.classList.remove("selected");
+            });
+
+            button.classList.add("selected");
+
+            selectedAnswer = option;
+        });
+
+        options.appendChild(button);
     });
 }
 
-function resetState() {
-    nextButton.style.display = "none";
+nextBtn.addEventListener("click", () => {
 
-    while (answerButtons.firstChild) {
-        answerButtons.removeChild(answerButtons.firstChild);
+    if (!selectedAnswer) {
+        alert("Please select an answer");
+        return;
     }
-}
 
-function selectAnswer(e) {
-    const selectedBtn = e.target;
-
-    // Remove blue color from previously selected option
-    Array.from(answerButtons.children).forEach(button => {
-        button.classList.remove("correct");
-    });
-
-    // Add blue color to selected option
-    selectedBtn.classList.add("correct");
-
-    // Check score silently
-    if (selectedBtn.dataset.correct === "true") {
+    if (selectedAnswer === quizData[currentQuestion].answer) {
         score++;
     }
 
-    // Disable all buttons after selection
-    Array.from(answerButtons.children).forEach(button => {
-        button.disabled = true;
-    });
+    currentQuestion++;
 
-    nextButton.style.display = "block";
-}
-
-function showScore() {
-    resetState();
-
-    questionElement.innerHTML = `
-        <div class="result">
-            <h2>Quiz Completed</h2>
-            <p>Your Score: ${score}/${questions.length}</p>
-            <p>${score >= 4 ? "Good Job!" : "Keep Practicing!"}</p>
-        </div>
-    `;
-
-    nextButton.innerHTML = "Restart Quiz";
-    nextButton.style.display = "block";
-}
-
-function handleNextButton() {
-    currentQuestionIndex++;
-
-    if (currentQuestionIndex < questions.length) {
-        showQuestion();
+    if (currentQuestion < quizData.length) {
+        loadQuestion();
     } else {
-        showScore();
-    }
-}
-
-nextButton.addEventListener("click", () => {
-    if (currentQuestionIndex < questions.length) {
-        handleNextButton();
-    } else {
-        startQuiz();
+        showResult();
     }
 });
 
-startQuiz();
+function showResult() {
+
+    document.getElementById("quiz").style.display = "none";
+
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("score").innerText =
+        `Your Score: ${score}/${quizData.length}`;
+
+    document.getElementById("message").innerText =
+        score >= 3 ? "Good Job!" : "Keep Practicing!";
+}
+
+document.getElementById("restart-btn").addEventListener("click", () => {
+
+    currentQuestion = 0;
+    score = 0;
+
+    document.getElementById("result").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
+
+    loadQuestion();
+});
+
+loadQuestion();
