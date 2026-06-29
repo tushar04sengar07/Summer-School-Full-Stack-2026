@@ -1,4 +1,5 @@
-function Navbar() {
+import "../css/Navbar.css";
+function Navebar() {
     return (
         <nav>
             <div className="logo"> My Portfolio </div>
@@ -20,4 +21,4 @@ function Navbar() {
     );
 }
 
-export default Navbar;
+export default Navebar;
